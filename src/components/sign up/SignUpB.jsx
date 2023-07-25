@@ -1,0 +1,12 @@
+import React, { Component } from 'react'
+
+export default class SignUpB extends Component {
+  render() {
+    return (
+      <div style={{display:'flex',padding:'120px',gap:'450px',alignItems:'center'}}>
+        <p className='singUpP'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+        <button className='butt2' >Join Today</button>
+      </div>
+    )
+  }
+}
