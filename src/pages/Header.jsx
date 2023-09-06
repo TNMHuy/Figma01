@@ -34,9 +34,7 @@ const Header = () => {
             </div>
        
         </div>
-        <div className=' font-bold uppercase  '> 
-            <p className=' text-[305px] '>magazines</p>
-        </div>
+        
     </div>
     
   )
