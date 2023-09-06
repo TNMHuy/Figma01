@@ -38,7 +38,7 @@ export default class BodyJ extends Component {
             <SubBody h={content.h3} p={content.p5}/>
 
             </div>
-        <img style={{width:'830px',height:'740px'}} src={img} alt="" />
+        <img style={{width:'100%',height:'740px'}} src={img} alt="" />
         </div>
       </div>
     )

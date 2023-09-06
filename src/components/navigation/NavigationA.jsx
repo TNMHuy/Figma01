@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import img1 from './Union1.png'
 import img2 from './Union2.png'
+import { Link } from 'react-router-dom'
 
 export default class NavigationA extends Component {
   render() {
@@ -18,10 +19,20 @@ export default class NavigationA extends Component {
 
         <div >
             <ul className='subNav'>
-                <li>Features</li>
-                <li>Pricing</li>
-                <li>Community</li>
-                <li>Support</li>
+            <li>
+                  <Link to="/about">About</Link>
+                </li>
+            <li>
+                  <Link to="/service">Service</Link>
+                </li>
+            <li>
+                  <Link to="/blog">Blog</Link>
+                </li>
+            <li>
+                  <Link to='/store'>Store</Link>
+                </li>
+                
+                
             </ul>
         </div>
 
