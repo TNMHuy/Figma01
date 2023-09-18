@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='bg-black text-white'>
+    <div className='bg-black text-white overflow-hidden'>
         <div className='text-[22px] font-semibold uppercase flex gap-6 mx-5 mb-32'>
             <div >NEWSLETTER++ </div>
             <div >NEWSLETTER++ </div>
@@ -16,11 +16,12 @@ const Footer = () => {
             <div >NEWSLETTER++ </div>
         </div>
         <div className='flex mx-20 justify-between items-center'>
-            <div className='uppercase text-[80px] leading-[110%] font-semibold w-[790px]'>
-                design news to your inbox
+            <div >
+                <h3 className='xl:text-[80px] lg:text-[70px] md:text-[50px] uppercase font-semibold'>design news to
+                <br/> your inbox</h3>
             </div>
             <div className='flex justify-center items-center'>
-                <input className='h-[50px] w-[309px] ' type='email'  placeholder='Email' />
+                <input className='h-[50px] w-[309px] px-4 ' type='email'  placeholder='Email' />
                 <button className='ml-4 h-[50px] text-[14px] font-medium text-black bg-white mx-auto my-auto w-[104px]'>SIGN UP</button>
 
             </div>

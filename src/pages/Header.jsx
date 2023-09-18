@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <div className='mt-16  mb-24 mx-20 '>
-        <div className='  border-b border-black ' >
-            <div className='flex '>
-             <div className='flex-[1_0_0] text-[22px]  font-bold uppercase items-center'>
+    <div className='  px-20 w-full '>
+        <div className='  border-b border-black h-[90px] flex justify-center items-center w-full ' >
+            <div className='flex w-full '>
+             <Link to="/" className='flex-[1_0_0] text-[22px]  font-bold uppercase items-center'>
             fyre magazine
-            </div>
+            </Link>
              <div className='flex justify-end flex-[1_0_0] items-center gap-6 pb-4 text-[20px] font-normal' >
                 <Link to="/blog">Magazine</Link>
                 <Link to="/about">Authors</Link>
-                <Link to="/service">Postcast</Link>
+                <Link to="/podcast">Postcast</Link>
                 <p className='w-[15px] h-[1px] bg-black'></p>
                 <div className='flex gap-3'>
                     <svg xmlns="http://www.w3.org/2000/svg" width={20} height={21} viewBox="0 0 20 21" fill="none">
