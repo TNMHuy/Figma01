@@ -13,7 +13,7 @@ const Home = () => {
   const [search,setSearch] = useState('')
   const [categories,setcategories] = useState('1,28')
   useEffect( () => {
-      const data = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}`).then(
+      const data = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}&_embed`).then(
         (res)=>{
           setList(res.data)
         }

@@ -18,6 +18,9 @@ const Blog = () => {
       )
        
   }, [search,categories,perPage])
+  useEffect (()=>{
+    window.scrollTo({top:0})
+  },[])
   // console.log(list);
   return (
     <div className='mx-20 mb-48' >

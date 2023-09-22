@@ -2,12 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { scroll } from '../../utills/blog'
 
-const SubHomeBody = ({post}) => {
+const SubHomeBody = ({post,index}) => {
+  // console.log(post._embedded); 
+  
   return (
-    <div className=' border-b border-black mb-12 pb-12'>
+    <div className={index===5?'mb-12 pb-12': 'border-b border-black mb-12 pb-12'}>
       <div className='flex gap-12 '>
         <div>
-            <img src="https://via.placeholder.com/380x380" alt="" />
+           {post._embedded['wp:featuredmedia']&& <img className='h-[220px] w-[380px]' src={post._embedded['wp:featuredmedia']['0'].source_url} alt="" />} 
+           {!post._embedded['wp:featuredmedia']&& <img src={'https://via.placeholder.com/380x380'} alt="" />} 
         </div>
         <Link onClick={scroll} to={'/blog/' + post.slug} className='flex flex-col justify-between '>
             <div className='2xl:text-[32px] xl:text-[28px] lg:text-[24px] font-semibold leading-[120%] font-[General Sans]'>{post.title.rendered}</div>

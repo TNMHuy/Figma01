@@ -21,7 +21,7 @@ const Footer = () => {
                 <br/> your inbox</h3>
             </div>
             <div className='flex justify-center items-center'>
-                <input className='h-[50px] w-[309px] px-4 ' type='email'  placeholder='Email' />
+                <input className='h-[50px] w-[309px] px-4 text-black' type='email'  placeholder='Email' />
                 <button className='ml-4 h-[50px] text-[14px] font-medium text-black bg-white mx-auto my-auto w-[104px]'>SIGN UP</button>
 
             </div>

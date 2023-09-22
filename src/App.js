@@ -12,10 +12,15 @@ import NavigationA from './components/navigation/NavigationA';
 import Footer from './pages/Footer';
 import Test from './pages/Test';
 import Podcast from './pages/Podcast';
+import { useEffect } from 'react';
 
 
 
 function App() {
+
+  useEffect (()=>{
+    window.scrollTo({top:0})
+  },[window.location.pathname])
   return (
     // <Test/>
     <BrowserRouter >

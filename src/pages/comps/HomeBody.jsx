@@ -42,7 +42,7 @@ const HomeBody = ({post}) => {
             <div className='w-3/4 '>
                 {
                     post.map((item,index)=>{
-                        return (<SubHomeBody key={index} post={item}/>)
+                        return (<SubHomeBody key={index} post={item} index={index}/>)
                     })
                     
                 }

@@ -1,9 +1,6 @@
 import React from 'react'
-import img5 from '../assets/podcast/5.png'
-import img4 from '../assets/podcast/4.png'
-import img3 from '../assets/podcast/3.png'
-import img2 from '../assets/podcast/2.png'
-import img1 from '../assets/podcast/1.png'
+import DetailPodcast from './comps/DetailPodcast'
+import { podcastList } from '../utills/blog'
 const Podcast = () => {
   return (
     <div className="py-12 mx-20 ">
@@ -20,131 +17,11 @@ const Podcast = () => {
      </div>
 
         <div id='body ' className='mt-48'>
-            <div id='subBody' className='flex border-b border-black pb-12 mb-12 items-center justify-between'>
-                <div className='flex gap-16 items-center'>
-                    <div className='text-[24px] font-bold'>05</div>
-                    <div><img src={img5} alt="" /></div>
-                    <p className='2xl:text-[32px] xl:text-[28px] lg:text-[20px] font-bold leading-[120%] 2xl:w-[500px] xl:w-[195px] lg:w-[100px] '>The Problem of today’s cultural development</p>
-                </div>
-                <div className='flex gap-16 '>
-                <div className='flex justify-between items-center gap-2'>
-                    <h4 className='uppercase text-[14px] leading-[180%] font-bold'> date</h4>
-                    <p>16. March 2022</p>
-                </div>
-                <div className='flex justify-between items-center gap-2'>
-                <h4 className='uppercase text-[14px] leading-[180%] font-bold'> duration</h4>
-                <p>1hr 20min</p>
-                </div>
-                <div className='text-[16px] font-bold uppercase my-auto flex gap-2'>
-                    <p>listen </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                    <path d="M16.172 11.0002L10.808 5.63617L12.222 4.22217L20 12.0002L12.222 19.7782L10.808 18.3642L16.172 13.0002H4V11.0002H16.172Z" fill="black" />
-                    </svg>
-
-                </div>
-                </div>
-
-            </div>
-            <div id='subBody' className='flex border-b border-black pb-12 mb-12 items-center justify-between'>
-                <div className='flex gap-16 items-center'>
-                    <div className='text-[24px] font-bold'>04</div>
-                    <div><img src={img4} alt="" /></div>
-                    <p className='text-[32px] font-bold leading-[120%] w-[500px]'>The hidden messages of Jack Nielson</p>
-                </div>
-                <div className='flex gap-16 '>
-                <div className='flex justify-between items-center gap-2'>
-                    <h4 className='uppercase text-[14px] leading-[180%] font-bold'> date</h4>
-                    <p>16. March 2022</p>
-                </div>
-                <div className='flex justify-between items-center gap-2'>
-                <h4 className='uppercase text-[14px] leading-[180%] font-bold'> duration</h4>
-                <p>1hr 20min</p>
-                </div>
-                <div className='text-[16px] font-bold uppercase my-auto flex gap-2'>
-                    <p>listen </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                    <path d="M16.172 11.0002L10.808 5.63617L12.222 4.22217L20 12.0002L12.222 19.7782L10.808 18.3642L16.172 13.0002H4V11.0002H16.172Z" fill="black" />
-                    </svg>
-
-                </div>
-                </div>
-
-            </div>
-            <div id='subBody' className='flex border-b border-black pb-12 mb-12 items-center justify-between'>
-                <div className='flex gap-16 items-center'>
-                    <div className='text-[24px] font-bold'>03</div>
-                    <div><img src={img3} alt="" /></div>
-                    <p className='text-[32px] font-bold leading-[120%] w-[500px]'>Behind the scenes of the street art culture</p>
-                </div>
-                <div className='flex gap-16 '>
-                <div className='flex justify-between items-center gap-2'>
-                    <h4 className='uppercase text-[14px] leading-[180%] font-bold'> date</h4>
-                    <p>16. March 2022</p>
-                </div>
-                <div className='flex justify-between items-center gap-2'>
-                <h4 className='uppercase text-[14px] leading-[180%] font-bold'> duration</h4>
-                <p>1hr 20min</p>
-                </div>
-                <div className='text-[16px] font-bold uppercase my-auto flex gap-2'>
-                    <p>listen </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                    <path d="M16.172 11.0002L10.808 5.63617L12.222 4.22217L20 12.0002L12.222 19.7782L10.808 18.3642L16.172 13.0002H4V11.0002H16.172Z" fill="black" />
-                    </svg>
-
-                </div>
-                </div>
-
-            </div>
-            <div id='subBody' className='flex border-b border-black pb-12 mb-12 items-center justify-between'>
-                <div className='flex gap-16 items-center'>
-                    <div className='text-[24px] font-bold'>02</div>
-                    <div><img src={img2} alt="" /></div>
-                    <p className='text-[32px] font-bold leading-[120%] w-[500px]'>The art of movement</p>
-                </div>
-                <div className='flex gap-16 '>
-                <div className='flex justify-between items-center gap-2'>
-                    <h4 className='uppercase text-[14px] leading-[180%] font-bold'> date</h4>
-                    <p>16. March 2022</p>
-                </div>
-                <div className='flex justify-between items-center gap-2'>
-                <h4 className='uppercase text-[14px] leading-[180%] font-bold'> duration</h4>
-                <p>1hr 20min</p>
-                </div>
-                <div className='text-[16px] font-bold uppercase my-auto flex gap-2'>
-                    <p>listen </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                    <path d="M16.172 11.0002L10.808 5.63617L12.222 4.22217L20 12.0002L12.222 19.7782L10.808 18.3642L16.172 13.0002H4V11.0002H16.172Z" fill="black" />
-                    </svg>
-
-                </div>
-                </div>
-
-            </div>
-            <div id='subBody' className='flex   mb-48 items-center justify-between'>
-                <div className='flex gap-16 items-center'>
-                    <div className='text-[24px] font-bold'>01</div>
-                    <div><img src={img1} alt="" /></div>
-                    <p className='text-[32px] font-bold leading-[120%] w-[500px]'>10 artists your should definitely know</p>
-                </div>
-                <div className='flex gap-16 '>
-                <div className='flex justify-between items-center gap-2'>
-                    <h4 className='uppercase text-[14px] leading-[180%] font-bold'> date</h4>
-                    <p>16. March 2022</p>
-                </div>
-                <div className='flex justify-between items-center gap-2'>
-                <h4 className='uppercase text-[14px] leading-[180%] font-bold'> duration</h4>
-                <p>1hr 20min</p>
-                </div>
-                <div className='text-[16px] font-bold uppercase my-auto flex gap-2'>
-                    <p>listen </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                    <path d="M16.172 11.0002L10.808 5.63617L12.222 4.22217L20 12.0002L12.222 19.7782L10.808 18.3642L16.172 13.0002H4V11.0002H16.172Z" fill="black" />
-                    </svg>
-
-                </div>
-                </div>
-
-            </div>
+            {
+                podcastList.map((item,index)=>{
+                    return <DetailPodcast key={index} item={item} index={index}/>
+                })
+            }
 
         </div>
  </div>

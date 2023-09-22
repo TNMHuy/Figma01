@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getFormattedDate, getPostApi } from '../utills/blog'
 import Line from './Line'
 import Article from './Article'
@@ -8,28 +8,34 @@ import ava from '../assets/jack-finnigan-rriAI0nhcbc-unsplash 1.png'
 
 const Detail = () => {
     const {slug} = useParams()
-    const [post,setPost] = useState({})
+    const [post,setPost] = useState(null)
     const [list,setList] = useState([])
     const [perPage,setPerPage] = useState('3')
     const [search,setSearch] = useState('')
     const [categories,setcategories] = useState('1,28')
+    const navigate = useNavigate();
     useEffect( () => {
-        const data = getPostApi.get(`?slug=${slug}`).then(
+        const data = getPostApi.get(`?slug=${slug}&_embed`).then(
           (res)=>{
-            setPost(res.data[0])
+      
+          if( post === null) {
+            setPost(res.data[0])}
           }
         )
-        const getData = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}`).then(
-          (data)=>{
-            setList(data.data)
-          }
-        )
+       
     }, [])
-  
+  useEffect( () =>{
+    const getData = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}`).then(
+      (data)=>{
+        setList(data.data)
+      }
+    )
+  },[])
+  if(post===null) return 'loading'
   return (
     <div className='mx-20'>
       <div className='flex mt-[38px] justify-between'>
-        <div className='flex uppercase font-bold'>
+        <div onClick={() => navigate(-1)} className='flex uppercase font-bold'>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
           <path d="M7.828 13.5L13.192 18.864L11.778 20.278L4 12.5L11.778 4.72202L13.192 6.13601L7.828 11.5L20 11.5V13.5L7.828 13.5Z" fill="black"/>
         </svg>
@@ -46,12 +52,20 @@ const Detail = () => {
             <button className='border border-black rounded-[100px] py-2 px-3 uppercase'>LABEL</button>
         </div>
         <div className='w-full aspect-video overflow-hidden flex justify-center items-center mt-8 mb-20'> 
-            <img src="https://via.placeholder.com/380x380"
+          {post._embedded['wp:featuredmedia']
+          ?<img src={post._embedded['wp:featuredmedia']['0'].source_url}
                  alt="" 
                  height={409}
                  width={614}
                  className='w-full '
                  />
+          :<img src={'https://via.placeholder.com/380x380'}
+          alt="" 
+          height={409}
+          width={614}
+          className='w-full '
+          />
+          } 
         </div>
         <div className='w-[1000px] mx-auto flex gap-16 items-start mb-48'>
           <aside>
@@ -112,7 +126,7 @@ const Detail = () => {
         <div className='grid grid-cols-3 mt-[67px] mb-48'>
         {
         list.map((item,index)=>{
-          console.log(item);
+          
             return (
              <Article key={index} post={item}/>
             )
