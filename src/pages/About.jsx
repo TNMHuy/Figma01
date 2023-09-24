@@ -1,11 +1,15 @@
-import React from 'react'
+
 import au1 from '../assets/jack-finnigan-rriAI0nhcbc-unsplash 1.png'
 import au2 from '../assets/bekah-allmark-Qt0ogPnhGWY-unsplash 1.png'
 import au3 from '../assets/olena-sergienko-0TSd6uCKTKc-unsplash 1.png'
 import au4   from '../assets/metin-ozer-iSmTwuKTNDo-unsplash 1.png'
 import au5   from '../assets/jeffery-erhunse-vp9mRauo68c-unsplash 1.png'
+import React, { useEffect, useState } from 'react'
 import au6   from '../assets/emiliano-vittoriosi-fIM5oAdHAxE-unsplash 1.png'
 const About = () => {
+  useEffect (()=>{
+    window.scrollTo({top:0})
+  },[])
   return (
     <div className='py-12 mx-20'>
          <div className="mx-auto flex justify-center items-center  ">

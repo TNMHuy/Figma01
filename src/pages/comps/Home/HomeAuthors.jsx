@@ -1,6 +1,6 @@
 import React from 'react'
-import { authorsList } from '../../utills/blog'
-import Author from './Author'
+import { authorsList } from '../../../utills/blog'
+import Author from '../Author'
 
 
 const HomeAuthors = () => {

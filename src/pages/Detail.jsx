@@ -25,17 +25,22 @@ const Detail = () => {
        
     }, [])
   useEffect( () =>{
-    const getData = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}`).then(
+    const getData = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}&_embed`).then(
       (data)=>{
         setList(data.data)
       }
     )
   },[])
+  const handleBack =() =>{
+    navigate(-1)
+    window.scrollTo({top:0})
+    
+  }
   if(post===null) return 'loading'
   return (
     <div className='mx-20'>
       <div className='flex mt-[38px] justify-between'>
-        <div onClick={() => navigate(-1)} className='flex uppercase font-bold'>
+        <div onClick={() => handleBack()} className='flex uppercase font-bold cursor-pointer'>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
           <path d="M7.828 13.5L13.192 18.864L11.778 20.278L4 12.5L11.778 4.72202L13.192 6.13601L7.828 11.5L20 11.5V13.5L7.828 13.5Z" fill="black"/>
         </svg>
@@ -44,7 +49,7 @@ const Detail = () => {
         <div className='uppercase text-[32px] font-bold'>magazine</div>
       </div>
        <div className='flex items-start gap-[103px] my-24'>
-          <h2 className='text-[104px] font-semibold flex-[1_0_0] leading-[110%] uppercase '>{post.title?.rendered}</h2>
+          <h2 className='text-[104px] font-semibold flex-[1_0_0] leading-[110%] uppercase text-left '>{post.title?.rendered}</h2>
           <div className='flex-[1_0_0] text-[20px] leading-[180%] font-medium' dangerouslySetInnerHTML={{__html:post.excerpt?.rendered}}/>
        </div>
        <div className='flex justify-between items-center'>

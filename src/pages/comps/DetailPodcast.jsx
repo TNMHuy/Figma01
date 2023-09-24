@@ -8,7 +8,7 @@ const DetailPodcast = ({item,index}) => {
                 <div className='flex gap-16 items-center'>
                     <div className='text-[24px] font-bold'>{item.number}</div>
                     <div><img src={item.img} alt="" /></div>
-                    <p className='2xl:text-[32px] xl:text-[28px] lg:text-[20px] font-bold leading-[120%] 2xl:w-[500px] xl:w-[195px] lg:w-[100px] text-left  '>The Problem of today’s cultural development</p>
+                    <p className='2xl:text-[32px] xl:text-[28px] lg:text-[20px] font-bold leading-[120%] 2xl:w-[500px] xl:w-[195px] lg:w-[100px] text-left  '>{item.p}</p>
                 </div>
                 <div className='flex gap-16 '>
                 <div className='flex justify-between items-center gap-2'>

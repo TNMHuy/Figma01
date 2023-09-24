@@ -6,22 +6,56 @@ import Article from './Article'
 
 
 const Blog = () => {
+  const [next,setNext] = useState(true)
   const [list,setList] = useState([])
-  const [perPage,setPerPage] = useState('9')
+  const [listNext,setListNext] = useState([])
+  const [perPage,setPerPage] = useState('6')
   const [search,setSearch] = useState('')
+  const [page,setPage] = useState(1)
   const [categories,setcategories] = useState('1,28')
   useEffect( () => {
-      const data = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}`).then(
+      const data = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}&page=${page}&_embed`).then(
         (res)=>{
           setList(res.data)
         }
       )
+
+      const dataNext = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}&page=${page+1}&_embed`).then(
+        (res)=>{
+          setListNext(res.data)
+          setNext(true)
+        }
+      )
+      .catch ((err)=>{
+        setNext(false)
+      })
        
-  }, [search,categories,perPage])
+  }, [search,categories,perPage,page])
   useEffect (()=>{
     window.scrollTo({top:0})
   },[])
-  // console.log(list);
+ 
+  const activeClass =(id) =>{
+    if (categories === id) return "border border-black rounded-[100px] bg-black text-white py-2 px-3 uppercase text-center"
+    return "border border-black rounded-[100px] py-2 px-3 uppercase text-center"
+  }
+  const handleNext = () =>{
+    if (next) {
+      window.scrollTo({top:650})
+      setPage(page+1)
+    }
+  }
+  const handlePrevious = () =>{
+    if (page>1) {
+      window.scrollTo({top:650})
+      setPage(page-1)
+    }
+  }
+  const handleCate =(id) =>{
+    setcategories(id)
+    setPage(1)
+    setSearch('')
+  }
   return (
     <div className='mx-20 mb-48' >
            <div className="py-12  mb-24 ">
@@ -40,13 +74,16 @@ const Blog = () => {
         </div>
 
      </div>
-        <label className='text-4 font-bold uppercase' >categories :</label>
-        <select value={categories} onChange={event => setcategories(event.target.value)}>
-        <option value="1">Categories 1</option>
-        <option value="28">Categories 2</option>
-        <option value="1,28">All </option>
-        </select>
-    <input className='ml-2 border border-black px-2' type='text' value={search} placeholder='search' onChange={event => setSearch(event.target.value)}/>
+       <div className='grid grid-cols-4 gap-4 mb-16'>
+        <h2 className='uppercase'>category :</h2>
+        <div onClick={()=>handleCate('1')} className={activeClass('1')}>cate 1</div>
+        <div onClick={()=>handleCate('28')} className={activeClass('28')} >cate 2</div>
+        <div onClick={()=>handleCate('1,28')} className={activeClass('1,28')}>all</div>
+       </div>
+    <input className='w-full border border-black px-2 py-2 col-span-12' type='text' value={search} placeholder='search' onChange={event => {
+      setSearch(event.target.value)
+      setPage(1)
+      }}/>
       <div className=' grid grid-cols-3 mt-[67px] mb-24 '>
 
       {
@@ -58,13 +95,26 @@ const Blog = () => {
         })
       }
       </div>
-      <div className=' flex justify-end'>
-        <button className='flex gap-2' >
+      <div className=' flex justify-between'
+       style={page===1&&next===true
+      ?{justifyContent:'end'}
+      :page>1&&next===false
+      ?{justifyContent:'start'}
+      :{justifyContent:'space-between'}
+      
+    }>
+        {page>1&&<button onClick={handlePrevious} className='flex gap-2' >
+            <svg className='rotate-180' xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
+            <path d="M16.172 11.0002L10.808 5.63617L12.222 4.22217L20 12.0002L12.222 19.7782L10.808 18.3642L16.172 13.0002H4V11.0002H16.172Z" fill="black" />
+            </svg>
+            <p className='text-[16px] font-semibold uppercase'>previous</p>
+        </button>}
+        {next&&<button onClick={handleNext} className='flex gap-2' >
             <p className='text-[16px] font-semibold uppercase'>next</p>
             <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
             <path d="M16.172 11.0002L10.808 5.63617L12.222 4.22217L20 12.0002L12.222 19.7782L10.808 18.3642L16.172 13.0002H4V11.0002H16.172Z" fill="black" />
             </svg>
-        </button>
+        </button>}
       </div>
       
     </div>

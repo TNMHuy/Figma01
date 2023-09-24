@@ -1,7 +1,12 @@
-import React from 'react'
+
 import DetailPodcast from './comps/DetailPodcast'
 import { podcastList } from '../utills/blog'
+import React, { useEffect } from 'react'
+
 const Podcast = () => {
+    useEffect (()=>{
+        window.scrollTo({top:0})
+      },[])
   return (
     <div className="py-12 mx-20 ">
         <div className="mx-auto flex justify-center items-center  ">

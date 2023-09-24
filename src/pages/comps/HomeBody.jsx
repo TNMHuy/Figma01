@@ -1,16 +1,15 @@
 import React from 'react'
-import SubHomeBody from './SubHomeBody';
+import SubHomeBody from './Home/SubHomeBody';
 import bg from '../../assets/background.png'
 import circle from '../../assets/circle.png'
 import arrow from '../../assets/arrow.png'
-import HomePodCast from './HomePodCast';
+import HomePodCast from './Home/HomePodCast';
 import ep5 from '../../assets/EP05.png'
 import ep4 from '../../assets/ep04.png'
 import ep3 from '../../assets/ep03.png'
 import img from '../../assets/dimitar-belchev-fRBpWLAcWIY-unsplash 1.png'
-import HomeAuthors from './HomeAuthors';
+import HomeAuthors from './Home/HomeAuthors';
 import { Link } from 'react-router-dom';
-import { scroll } from '../../utills/blog';
 const mess5 = "The Problem of today's cultural development"
 const mess4 = "The hidden messages of Jack Nielso"
 const mess3 = "Behind the scenes of the street art culture"
@@ -48,7 +47,7 @@ const HomeBody = ({post}) => {
                 }
                
                 <div className='flex  gap-2 mt-24 mb-12'>
-                    <Link to="/blog" onClick={scroll} href="#top" className='uppercase text-[16px] font-bold'>all articles</Link>
+                    <Link to="/blog"  href="#top" className='uppercase text-[16px] font-bold'>all articles</Link>
                         <svg xmlns="http://www.w3.org/2000/svg" width={24} height={25} viewBox="0 0 24 25" fill="none">
                             <path d="M16.172 11.2873L10.808 5.92328L12.222 4.50928L20 12.2873L12.222 20.0653L10.808 18.6513L16.172 13.2873H4V11.2873H16.172Z" fill="black" />
                         </svg>
@@ -136,7 +135,7 @@ const HomeBody = ({post}) => {
         <div className='flex justify-between items-center mb-24'>
             <div className='2xl:text-[104px] xl:text-[80px] lg:text-[70px] md:text-[50px] font-bold uppercase ml-[-5px]'>podcast</div>
             <div className='flex  gap-2 mt-24 mb-12'>
-                <Link to="/podcast" onClick={scroll} className='uppercase text-[16px] font-bold'>all episodes</Link>
+                <Link to="/podcast"  className='uppercase text-[16px] font-bold'>all episodes</Link>
                 <svg xmlns="http://www.w3.org/2000/svg" width={24} height={25} viewBox="0 0 24 25" fill="none">
                     <path d="M16.172 11.2873L10.808 5.92328L12.222 4.50928L20 12.2873L12.222 20.0653L10.808 18.6513L16.172 13.2873H4V11.2873H16.172Z" fill="black" />
                 </svg>
@@ -154,7 +153,7 @@ const HomeBody = ({post}) => {
         <div className='flex justify-between items-center mb-24 '>
                 <div className='2xl:text-[104px] lg:text-[70px] md:text-[50px]  font-bold uppercase ml-[-5px]'>authors</div>
                 <div className='flex  gap-2 '>
-                    <Link to='./about' onClick={scroll} className='uppercase text-[16px] font-bold'>all authors</Link>
+                    <Link to='./about'  className='uppercase text-[16px] font-bold'>all authors</Link>
                     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={25} viewBox="0 0 24 25" fill="none">
                         <path d="M16.172 11.2873L10.808 5.92328L12.222 4.50928L20 12.2873L12.222 20.0653L10.808 18.6513L16.172 13.2873H4V11.2873H16.172Z" fill="black" />
                     </svg>
