@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { getFormattedDate, getPostApi } from '../utills/blog'
 import Line from './Line'
 import Article from './Article'
-import Header from './Header'
 import ava from '../assets/jack-finnigan-rriAI0nhcbc-unsplash 1.png'
 
 const Detail = () => {

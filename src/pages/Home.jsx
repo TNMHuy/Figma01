@@ -9,9 +9,9 @@ import { getPostApi } from '../utills/blog'
 
 const Home = () => {
   const [list,setList] = useState([])
-  const [perPage,setPerPage] = useState('6')
-  const [search,setSearch] = useState('')
-  const [categories,setcategories] = useState('1,28')
+  const [perPage] = useState('6')
+  const [search] = useState('')
+  const [categories] = useState('1,28')
   useEffect( () => {
       const data = getPostApi.get(`?per_page=${perPage}&search=${search}&categories=${categories}&_embed`).then(
         (res)=>{
