@@ -13,6 +13,9 @@ import img1 from '../assets/podcast/1.png'
 export const getPostApi = axios.create({
   baseURL:'https://api.hoangquanit.com/wp-json/wp/v2/posts'
 })
+export const getPostApiId = axios.create({
+  baseURL:'https://api.hoangquanit.com/wp-json/wp/v2/posts'
+})
   
 export const getFormattedDate = (theDate='', locales= 'vi-VN') =>{
   const options ={ year:'numeric', month :'short', day:'numeric'};

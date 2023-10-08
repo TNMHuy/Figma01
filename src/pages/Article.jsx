@@ -1,11 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { getFormattedDate } from '../utills/blog'
 
 const Article = ({post}) => {
   return (
     <div className='flex flex-col gap-8 border border-black p-12 h-[1000px] overflow-hidden'>
         <div className='flex justify-between items-center'>
-            <p className='text-xs'>{post.date}</p>
+            <p className='text-xs'>{getFormattedDate(post.date)}</p>
             <button className='border border-black rounded-[100px] py-2 px-3 uppercase'>ART</button>
         </div>
         <div>

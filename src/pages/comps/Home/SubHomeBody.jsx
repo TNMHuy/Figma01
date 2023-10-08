@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getFormattedDate } from '../../../utills/blog'
 
 
 const SubHomeBody = ({post,index}) => {
@@ -18,7 +19,7 @@ const SubHomeBody = ({post,index}) => {
             <div className=' 2xl:text-[18px] xl:text-[16px] lg:text-[10px] md:text-[px] font-normal leading-[180%] 2xl:mt-[-50px] xl:mt-[12px] lg:mt-[10px] line-clamp-3 ' dangerouslySetInnerHTML={{__html:post.excerpt.rendered}}/>
 
             <div className='flex justify-between items-center'>
-            <p className='text-[16px]'>{post.date}</p>
+            <p className='text-[16px]'>{getFormattedDate(post.date)}</p>
             <button className='border md:text-[8px] 2xl:text-[18px] border-black rounded-[100px] py-2 px-3 uppercase'>ART</button>
         </div>       
         </Link>

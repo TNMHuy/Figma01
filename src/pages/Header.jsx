@@ -4,7 +4,7 @@ import { UserContext } from '../utills/loginContext'
 
 const Header = () => {
   const user = useContext(UserContext)
-  console.log(user);
+
 
   return (
     <div className='  px-20 w-full '>

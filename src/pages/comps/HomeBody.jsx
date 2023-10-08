@@ -15,7 +15,8 @@ const mess4 = "The hidden messages of Jack Nielso"
 const mess3 = "Behind the scenes of the street art culture"
 
 const HomeBody = ({post}) => {
-    
+   
+
   return (
     <div>
         <div className='flex pt-16 pb-12'>
