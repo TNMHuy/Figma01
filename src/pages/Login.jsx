@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { UserContext } from '../utills/loginContext'
-import { Navigate, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { Navigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { login } from '../redux/slice/authSlice'
 import * as Yup from 'yup'
@@ -8,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const Login = () => {
   const dispatch = useDispatch()
+  const token = useSelector((state)=>state.auth.user.token)// {return state.auth.user.token}
   const formik = useFormik({
     initialValues:{
       email:'',
@@ -18,15 +18,16 @@ const Login = () => {
       password: Yup.string().required().min(4),
     }),
     onSubmit:(data)=>{
+      console.log(data);
       dispatch(login(data))
     }
   })
-  const [userName,setUserName] = useState('')
-  const [password,setPassword] = useState('')
-  const user = useContext(UserContext)
-  if(user.isLoggedIn){
-    return <Navigate to = '/admin' />
-  }
+//   const [userName,setUserName] = useState('')
+//   const [password,setPassword] = useState('')
+//   const user = useContext(UserContext)
+//   if(user.isLoggedIn){
+//     return <Navigate to = '/admin' />
+//   }
   
 //   const logIn = () =>{
 //    if(userName==='admin'&& password==='123123') {
@@ -41,7 +42,10 @@ const Login = () => {
 
 //   }
   // console.log(formik.values);
-
+  if(token){
+    return <Navigate to='/admin'/>
+  }
+ 
   return (
     <div className='bg-opacity'>
       <div className=' box '>
@@ -55,7 +59,7 @@ const Login = () => {
                 <i></i>
                 </div>
               <div className='mt-12 input-box'>
-                <input className=' z-10 font-semibold' type="password" name='password' required='required' value={formik.values.password} onChange={ formik.handleChange} />
+                <input className=' z-10 font-semibold' type="password" name='password' required='required' value={formik.values.password} onChange={formik.handleChange} />
                 <span>Password</span>
                 <i></i>
             

@@ -6,7 +6,7 @@ import { getFormattedDate, getPostApi } from '../utills/blog'
 const Admin = () => {
   const postList = []
   const user = useContext(UserContext)
-  const {id} = useParams()
+ 
   const [list,setList] = useState([])
   const [perPage,setPerPage] = useState('20')
   const [search,setSearch] = useState('')
@@ -14,7 +14,7 @@ const Admin = () => {
   const [categories,setcategories] = useState('1,28')
 
   useEffect (()=>{
-    const data = getPostApi.get(`?per_page=${perPage}&id=${id}&search=${search}&categories=${categories}&page=${page}&_embed`).then(
+    const data = getPostApi.get(`?per_page=${perPage}&search=${search}&page=${page}&_embed`).then(
       (res)=>{
         setList(res.data)
       }
@@ -63,7 +63,7 @@ const Admin = () => {
                     {index + 1}
                   </td>
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <Link to={'/edit/'+ item.id}>{item.title.rendered}{item.id}</Link>
+                    <Link to={'/edit/'+ item.id}>{item.title.rendered}</Link>
                   </th>
                   <td className="px-6  py-4">{getFormattedDate(item.date)}
                                   </td>

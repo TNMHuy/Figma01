@@ -18,6 +18,7 @@ import Protected from './components/Protected';
 import LoginProvider from './utills/loginContext';
 import Admin from './pages/Admin';
 import Edit from './pages/Edit';
+import AddPost from './pages/AddPost';
 
 
 
@@ -41,12 +42,10 @@ function App() {
             <Route path="/*" element={<NotFound/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/edit/:id" element={<Edit/>}/>
-            <Route path="/admin" element={
-              <Protected >
-                <Admin/>
-              </Protected>
-            }/>
-             
+            <Route  element={<Protected />}>
+                <Route path="/admin" element={<Admin/>}/>
+                <Route path="/admin/addpost" element={<AddPost/>}/>
+            </Route>
           </Routes>
           <Footer/>
       </LoginProvider>

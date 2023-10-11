@@ -1,68 +1,54 @@
-import React, { useEffect, useState } from 'react'
-import {  useParams } from 'react-router-dom'
+import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { getFormattedDate, getPostApi, getPostApiId } from '../utills/blog'
 
-const Edit = () => {
-    const {id} = useParams()
-    const [post,setPost] = useState([])
+const AddPost = () => {
     const token = useSelector((state)=>state.auth.user.token)
-    useEffect( () =>{
-      const getData = getPostApiId.get(`/${id}?_embed`).then(
-        (data)=>{
-          setPost(data.data)
-        }
-      )
-    },[])
-    
-    
     const formik = useFormik({
-      // Initial values
-      initialValues: {
-          // title:post?.title?.rendered,
-          title:'123',
-          content: '',
-          featured_image: null,
-      },
+        // Initial values
+        initialValues: {
+            title: '',
+            content: '',
+            featured_image: null,
+        },
 
-      // Vlidations
-      validationSchema: Yup.object({
-          title: Yup.string().required(),
-          content: Yup.string().required(),
-          featured_image: Yup.mixed().required(),
-      }),
+        // Vlidations
+        validationSchema: Yup.object({
+            title: Yup.string().required(),
+            content: Yup.string().required(),
+            featured_image: Yup.mixed().required(),
+        }),
 
-      // Submit
-      onSubmit: async (data) => {
-          
-          const headers = {
-              Authorization: `Bearer ${token}`,
-          };
-          const formData = new FormData();
-          formData.append('title', data.title);
-          formData.append('content', data.content);
+        // Submit
+        onSubmit: async (data) => {
+            
+            const headers = {
+                Authorization: `Bearer ${token}`,
+            };
+            const formData = new FormData();
+            formData.append('title', data.title);
+            formData.append('content', data.content);
 
-          if (data.featured_image) {
-              // Featured Image
-              formData.append('featured_img', data.featured_image);
-          }
+            if (data.featured_image) {
+                // Featured Image
+                formData.append('featured_img', data.featured_image);
+            }
 
-          const response = await axios.post(`${process.env.REACT_APP_API_ROOT}/create-post`, formData, {
-                  headers: headers,
-                  'Content-Type': 'multipart/form-data'
-              });
+            const response = await axios.post(`${process.env.REACT_APP_API_ROOT}/create-post`, formData, {
+                    headers: headers,
+                    'Content-Type': 'multipart/form-data'
+                });
 
-          console.log('response', response);
-      }
-  });
-   
-  return (
-    <>
+            console.log('response', response);
+        }
+    });
+
+    return (
+        <>
             <div className="container mx-auto py-10">
-                <h1 className="text-3xl font-bold mb-5">Edit Post</h1>
+                <h1 className="text-3xl font-bold mb-5">Create a New Post</h1>
                 <form onSubmit={formik.handleSubmit}>
                     <div className="mb-5">
                         <label className="block text-gray-700 font-bold mb-2" htmlFor="post-title">
@@ -105,7 +91,7 @@ const Edit = () => {
                 </form>
             </div>
         </>
-  )
+    )
 }
 
-export default Edit
+export default AddPost

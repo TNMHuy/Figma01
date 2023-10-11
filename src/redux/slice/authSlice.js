@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+
 
 const initialState = {
     user: {},
@@ -8,11 +8,13 @@ const initialState = {
     isError: false,
 };
 
-export const login = createAsyncThunk('auth/login', async ({ email, password, navigate }) => {
+export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
     const data = { username: email, password: password };
-    const res = await axios.post(process.env.REACT_APP_API_AUTH_TOKEN, data);
-    navigate('/')
-    console.log(res.data);
+    const headers = new Headers();
+    headers.append("Accept", "application/json");
+
+    headers.append('Accept-Encoding', 'gzip, deflate, br');
+    const res = await axios.post(process.env.REACT_APP_API_AUTH_TOKEN, data,headers);
     return res.data;
 });
 // export const register = createAsyncThunk('auth/register', async (user) => {
