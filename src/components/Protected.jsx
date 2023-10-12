@@ -14,13 +14,8 @@ const Protected = () => {
   return(
     <>
     <div className=''>
-      <button>
-        <Link to='/admin'> admin</Link>
-      </button>
-      <button>
-      <Link to='/admin/addpost'> add post</Link>
-
-      </button>
+     
+      
     </div>
     <Outlet/>;
     </>

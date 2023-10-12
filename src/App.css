@@ -4,6 +4,10 @@
 div {
   text-align: justify;
 }
+.user:hover .sub-user{
+
+  display:block;
+}
 .box{
   margin:  48px auto;
   position: relative;

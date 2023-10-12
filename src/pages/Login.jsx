@@ -8,6 +8,9 @@ import { useDispatch, useSelector } from 'react-redux'
 const Login = () => {
   const dispatch = useDispatch()
   const token = useSelector((state)=>state.auth.user.token)// {return state.auth.user.token}
+  const user = useSelector((state)=>state.auth.user)// {return state.auth.user.token}
+  console.log(token);
+  console.log(user);
   const formik = useFormik({
     initialValues:{
       email:'',
@@ -18,30 +21,11 @@ const Login = () => {
       password: Yup.string().required().min(4),
     }),
     onSubmit:(data)=>{
-      console.log(data);
+      // console.log(data);
       dispatch(login(data))
     }
   })
-//   const [userName,setUserName] = useState('')
-//   const [password,setPassword] = useState('')
-//   const user = useContext(UserContext)
-//   if(user.isLoggedIn){
-//     return <Navigate to = '/admin' />
-//   }
-  
-//   const logIn = () =>{
-//    if(userName==='admin'&& password==='123123') {
-//     user.setLogin(true)
 
-//    }
-//    else {
-//     alert('Sai thong tin')
-//     setPassword('')
-//     setUserName('')
-//    }
-
-//   }
-  // console.log(formik.values);
   if(token){
     return <Navigate to='/admin'/>
   }
@@ -54,7 +38,7 @@ const Login = () => {
               <h2 className='text-center font-medium  text-[60px] tracking-wider'>Sign in</h2>
               <div className=''>
               <div className='mt-8  input-box'>
-                <input className=' z-10 font-semibold' type="email" name='email' required='required' value={formik.values.email} onChange={formik.handleChange} />
+                <input className=' z-10 font-semibold w-full' type="email" name='email' required='required' value={formik.values.email} onChange={formik.handleChange} />
                 <span>Username</span>
                 <i></i>
                 </div>
