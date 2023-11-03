@@ -35,6 +35,7 @@ const Detail = () => {
     window.scrollTo({top:0})
     
   }
+  console.log({slug});
   if(post===null) return 'loading'
   return (
     <div className='mx-20'>

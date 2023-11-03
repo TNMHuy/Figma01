@@ -1,7 +1,7 @@
 import React from 'react'
 
 const DetailPodcast = ({item,index}) => {
-  console.log(index);
+  // console.log(index);
   return (
     <div>
         <div id='subBody' className={index===4?'flex pb-12 mb-48 items-center justify-between':'flex border-b border-black pb-12 mb-12 items-center justify-between'}>

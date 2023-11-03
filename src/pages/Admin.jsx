@@ -1,25 +1,42 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { UserContext } from '../utills/loginContext'
-import { getFormattedDate, getPostApi } from '../utills/blog'
+import { deletePostApiId, getFormattedDate, getPostApi, getPostApiId } from '../utills/blog'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
 
 const Admin = () => {
-  const postList = []
-  const user = useContext(UserContext)
- 
   const [list,setList] = useState([])
   const [perPage,setPerPage] = useState('20')
   const [search,setSearch] = useState('')
   const [page,setPage] = useState(1)
   const [categories,setcategories] = useState('1,28')
+  const token = useSelector((state)=>state.auth.user.token)
 
   useEffect (()=>{
     const data = getPostApi.get(`?per_page=${perPage}&search=${search}&page=${page}&_embed`).then(
       (res)=>{
-        setList(res.data)
+        setList(res.data)  
       }
     )
+    
   },[search,categories,perPage,page])
+  const handleDelete = (id) => {
+    axios
+      .delete('https://api.hoangquanit.com/wp-json/wp/v2/posts/' + id, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+       window.location.reload()
+      })
+      .catch((err) => {
+        console.log('Something wrong here');
+      });
+  
+  };
   
   return (
 
@@ -70,7 +87,7 @@ const Admin = () => {
                   
                   <td className="px-6 py-4" dangerouslySetInnerHTML={{__html:item.excerpt.rendered}}/>
                   <td className="px-6 py-4">
-                    <button id={item._id}  >Delete</button>
+                    <button id={item._id} onClick={()=>{handleDelete(item.id)}}  >Delete</button>
                   </td>
                 </tr>
               )

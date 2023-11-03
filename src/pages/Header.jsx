@@ -7,8 +7,9 @@ import logOut from '../assets/log-out-icon-2048x2048-cru8zabe.png'
 
 
 const Header = () => {
-  const token = useSelector(state=>state.auth.user.token)
-  const userName = useSelector(state=>state.auth.user.user_display_name)
+   
+  const token = useSelector(state=>state.auth.user.accessToken)
+  const userName = useSelector(state=>state.auth.user.username)
   const dispatch = useDispatch()
 
   return (
@@ -18,8 +19,10 @@ const Header = () => {
              <Link to="/" className='flex-[1_0_0] text-[22px]  font-bold uppercase items-center'>
             fyre magazine
             </Link>
-             <div className='flex justify-end flex-[1_0_0] items-center gap-6 pb-4 text-[20px] font-normal' >
+             <div className='flex justify-end flex-[1_1_1] items-center gap-6 pb-4 text-[20px] font-normal' >
                 <Link className=' hover:bg-zinc-400 rounded-3xl p-2'  to="/blog">Magazine</Link>
+                <Link className=' hover:bg-zinc-400 rounded-3xl p-2'  to="/blog2">Magazine 2</Link>
+                <Link className=' hover:bg-zinc-400 rounded-3xl p-2'  to="/editor">Editor </Link>
                 <Link className=' hover:bg-zinc-400 rounded-3xl p-2' to="/about">Authors</Link>
                 <Link className=' hover:bg-zinc-400 rounded-3xl p-2' to="/podcast">Postcast</Link>
                 {   token
@@ -28,7 +31,7 @@ const Header = () => {
                         {userName}
                         <img src={userImg} alt="" className='w-[28px] ' />
                     </div>    
-                        <div className='sub-user hidden  absolute left-[px] top-[60px] rounded-xl p-2 bg-white shadow-2xl w-[160px] '>
+                        <div className='sub-user hidden  absolute left-[px] top-[60px] rounded-3xl p-2 bg-white shadow-2xl w-[160px] '>
                             <button className=' hover:bg-zinc-400 rounded-2xl p-2 w-full'><Link to='/admin'> Dashboard</Link></button>
                             <button className=' hover:bg-zinc-400 rounded-2xl p-2 w-full'><Link to='/admin/addpost'> Add post</Link></button>
                             <button className='flex gap-3 hover:bg-zinc-400 rounded-2xl p-2 w-full justify-center' onClick={()=>{dispatch(logout())}}>Log out
@@ -46,6 +49,8 @@ const Header = () => {
                     </Link>
                     </div>
                 }
+                <Link className=' hover:bg-zinc-400 rounded-3xl p-2' to="/register">Register</Link>
+
                 <p className='w-[15px] h-[1px] bg-black'></p>
                 <div className='flex gap-3'>
                     <svg className='cursor-pointer' xmlns="http://www.w3.org/2000/svg" width={20} height={21} viewBox="0 0 20 21" fill="none">

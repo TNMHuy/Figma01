@@ -8,21 +8,27 @@ const initialState = {
     isError: false,
 };
 
-export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
-    const data = { username: email, password: password };
-    const headers = new Headers();
-    headers.append("Accept", "application/json");
-
-    headers.append('Accept-Encoding', 'gzip, deflate, br');
-    const res = await axios.post(process.env.REACT_APP_API_AUTH_TOKEN, data,headers);
+export const login = createAsyncThunk('auth/login', async ({ username, password }) => {
+        const data = { username: username, password: password };
+    console.log(data);
+    const res = await axios.post(`${process.env.REACT_APP_API_ROOT2}/v1/auth/login`, data);
     return res.data;
 });
-// export const register = createAsyncThunk('auth/register', async (user) => {
-//     if (!user || !user?.username || !user?.email || !user?.password) return null;
-//     const res = await axios.post(`${process.env.REACT_APP_API_ROOT}/register`, user);
-//     Navigate()
+// export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
+//     const data = { username: email, password: password };
+//     const headers = new Headers();
+//     headers.append("Accept", "application/json");
+//     headers.append('Accept-Encoding', 'gzip, deflate, br');
+//     const res = await axios.post(process.env.REACT_APP_API_AUTH_TOKEN, data,headers);
 //     return res.data;
 // });
+
+export const register = createAsyncThunk('auth/register', async (user) => {
+    console.log(user);
+    if (!user || !user?.username || !user?.email || !user?.password) return null;
+    const response = await axios.post(`https://advanced-blog.glitch.me/v1/auth/register`, user);
+    return response.data;
+});
 
 const authSlice = createSlice({
     name: 'auth',
@@ -46,19 +52,19 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
         });
-        //register
-        // builder.addCase(register.pending, (state) => {
-        //     state.isLoading = true;
-        // });
-        // builder.addCase(register.fulfilled, (state, action) => {
-        //     state.user = action.payload;
-        //     state.isLoading = false;
-        //     state.isError = false;
-        // });
-        // builder.addCase(register.rejected, (state) => {
-        //     state.isLoading = false;
-        //     state.isError = true;
-        // });
+        
+        builder.addCase(register.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(register.fulfilled, (state, action) => {
+            state.user = action.payload;
+            state.isLoading = false;
+            state.isError = false;
+        });
+        builder.addCase(register.rejected, (state) => {
+            state.isLoading = false;
+            state.isError = true;
+        });
     }
 });
 

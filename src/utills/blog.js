@@ -10,12 +10,19 @@ import img4 from '../assets/podcast/4.png'
 import img3 from '../assets/podcast/3.png'
 import img2 from '../assets/podcast/2.png'
 import img1 from '../assets/podcast/1.png'
+// export const getPostApi = axios.create({
+//   baseURL:'https://advanced-blog.glitch.me/v1/post'
+// })
 export const getPostApi = axios.create({
   baseURL:'https://api.hoangquanit.com/wp-json/wp/v2/posts'
+})
+export const getPostApi2 = axios.create({
+  baseURL:'https://advanced-blog.glitch.me/v1/post'
 })
 export const getPostApiId = axios.create({
   baseURL:'https://api.hoangquanit.com/wp-json/wp/v2/posts'
 })
+
   
 export const getFormattedDate = (theDate='', locales= 'vi-VN') =>{
   const options ={ year:'numeric', month :'short', day:'numeric'};

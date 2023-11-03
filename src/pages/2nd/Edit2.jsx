@@ -4,44 +4,43 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { getFormattedDate, getPostApi, getPostApiId } from '../utills/blog'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-const Edit = () => {
+const Edit2 = () => {
     const {id} = useParams()
     const [post,setPost] = useState([])
-    const token = useSelector((state)=>state.auth.user.token)
     const [title,setTitle] = useState('')
-    const [content,setContent] = useState('')
-    const [excerpt,setExcerpt] = useState('')
+    const [content,setContent] = useState([])
+    const [cover,setCover] = useState('')
     const navigate = useNavigate()
+    const token = useSelector((state)=>state.auth.user.accessToken)
     useEffect( () =>{
-      const getData = getPostApiId.get(`/${id}?_embed`).then(
+      const getData = axios.get(`https://advanced-blog.glitch.me/v1/post/`+id).then(
         (data)=>{
           setPost(data.data)
-          setTitle(data.data.title.rendered)
-          setContent(data.data.content.rendered)
-          setExcerpt(data.data.excerpt.rendered)
+          setTitle(data.data.title)
+          setContent(data.data.content)
+          setCover(data.data.cover)
         }
         )
       },[])
     const handleEdit= async(e) =>{
       // e.preventDefault()
-      // const formData = new FormData();
+    
       const formData = {
         title: title ,
         content: content,
-        excerpt: excerpt
+        cover: cover
       }
-      const headers = { Authorization: `Bearer ${token}`};
+      const headers = { token: `Bearer ${token}`};
       // formData.append('title', title)
       // formData.append('content', content);
-      const response = await axios.post(`https://api.hoangquanit.com/wp-json/wp/v2/posts/`+id,
-      formData, {headers: headers,'Content-Type': 'application/json'} )
+      const response = await axios.put(`https://advanced-blog.glitch.me/v1/post/`+id,
+      formData, {headers: headers} )
       console.log(response);
       if (response.status===200){
-        navigate('/admin')
+        navigate('/blog2')
       }
     }
     console.log(content);
@@ -69,7 +68,14 @@ const Edit = () => {
                 <label className="block text-gray-700 font-bold mb-2" htmlFor="post-content">
                     Post Content
                 </label>
-                <ReactQuill theme="snow" value={content} onChange={setContent} />
+                {
+                  content?.map((item,index)=>{
+                    return (
+                      <ReactQuill  value={item} key={index}/>
+                      
+                    )
+                  })
+                }
                 {/* <textarea
                     className="shadow appearance-none border rounded w-full py-2 px-3 h-[300px] text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     name="content"
@@ -80,18 +86,18 @@ const Edit = () => {
                 ></textarea> */}
             </div>
             <div className="mb-5">
-                <label className="block text-gray-700 font-bold mb-2" htmlFor="post-content">
-                    Post Excerpt
-                </label>
-                <ReactQuill theme="snow" value={excerpt} onChange={setExcerpt} />
-                {/* <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 h-[300px] text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    name="content"
-                    placeholder="Enter post content"
-                    value={content}
-                    onChange={(e)=>{setContent(e.target.value)}}
-                    
-                ></textarea> */}
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="post-title">
+                            Featured Image
+                        </label>
+                        <input
+                            className="shadow appearance-none  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="post-title"
+                            type="text"
+                            value={cover}
+                            onChange={e=>setCover(e.target.value)}
+                            name="cover"    
+                            
+                        />
+                        <img src={cover} alt="" />
             </div>
           
             <button type='button' 
@@ -107,4 +113,4 @@ const Edit = () => {
   
 }
 
-export default Edit
+export default Edit2

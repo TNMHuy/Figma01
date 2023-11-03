@@ -19,6 +19,11 @@ import LoginProvider from './utills/loginContext';
 import Admin from './pages/Admin';
 import Edit from './pages/Edit';
 import AddPost from './pages/AddPost';
+import Blog2 from './pages/2nd/Blog2';
+import Register from './pages/2nd/Register';
+import Detail2 from './pages/2nd/Detail2';
+import Editor from './pages/2nd/Editor';
+import Edit2 from './pages/2nd/Edit2';
 
 
 
@@ -35,6 +40,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/blog" element={<Blog/>}/>
+            <Route path="/blog2" element={<Blog2/>}/>
+            <Route path="/blog2/:id" element={<Detail2/>}/>
+            <Route path="/register" element={<Register/>}/>
             <Route path="/about" element={<About/> }/>
             <Route path="/podcast" element={<Podcast/>}/>
             <Route path="/blog/:slug" element={<Detail/>}/>
@@ -42,6 +50,8 @@ function App() {
             <Route path="/*" element={<NotFound/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/edit/:id" element={<Edit/>}/>
+            <Route path="/edit2/:id" element={<Edit2/>}/>
+            <Route path="/editor" element={<Editor/>}/>
             <Route  element={<Protected />}>
                 <Route path="/admin" element={<Admin/>}/>
                 <Route path="/admin/addpost" element={<AddPost/>}/>
