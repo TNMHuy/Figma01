@@ -31,16 +31,27 @@ const Article2 = ({post}) => {
         <div className='flex justify-between items-center'>
             <p className='text-xs'>{getFormattedDate(post.createdAt)}</p>
             <Link to={'/edit2/'+ post._id} className='border border-black rounded-[100px] py-2 px-3 uppercase'>EDIT</Link>
+            <Link to={'/editor2/'+ post._id} className='border border-black rounded-[100px] py-2 px-3 uppercase'>EDIT PREMIUM</Link>
             <button className='border border-black rounded-[100px] py-2 px-3 uppercase' onClick={()=>{handleDelete(post._id)}}>DELETE</button>
         </div>
         <div>
         {post.cover&& <img className='h-[366px] w-[366px]' src={post.cover} alt="" />} 
         {!post.cover&& <img className='h-[366px] w-[366px]' src={'https://via.placeholder.com/380x380'} alt="" />}
         </div>
+          <h2 className='2xl:text-[32px] xl:text-[28px] font-semibold'>{post.title}</h2>
         <Link  to={'/blog2/' + post._id} className='flex flex-col  justify-between gap-4'>
-           
-                <h2 className='2xl:text-[32px] xl:text-[28px] font-semibold'>{post.title}</h2>
-                 <div className='2xl:text-[16px]  md:text-[14px] sm:text-[12px] '/>{post.content}
+            {
+              post.content.map((item,index)=>{
+                return(
+                  <div  key={index}>
+                 <div className='2xl:text-[16px]  md:text-[14px] sm:text-[12px] '/>{item.text}
+                  </div>
+                )
+              })
+
+
+            }
+               
            
            
         </Link>

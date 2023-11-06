@@ -20,6 +20,7 @@ const Blog2 = () => {
        
         
     }, [])
+    console.log(list);
   return (
     <div className=' grid grid-cols-3 mt-[67px] mb-24 '>
 

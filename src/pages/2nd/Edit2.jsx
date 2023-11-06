@@ -34,8 +34,6 @@ const Edit2 = () => {
         cover: cover
       }
       const headers = { token: `Bearer ${token}`};
-      // formData.append('title', title)
-      // formData.append('content', content);
       const response = await axios.put(`https://advanced-blog.glitch.me/v1/post/`+id,
       formData, {headers: headers} )
       console.log(response);
@@ -71,7 +69,10 @@ const Edit2 = () => {
                 {
                   content?.map((item,index)=>{
                     return (
-                      <ReactQuill  value={item} key={index}/>
+                      <div>
+                        <ReactQuill className='my-5' value={item.text} key={index}/> 
+                        <img src={item.src} alt="" />
+                      </div>
                       
                     )
                   })

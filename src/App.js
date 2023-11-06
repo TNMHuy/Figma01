@@ -24,6 +24,7 @@ import Register from './pages/2nd/Register';
 import Detail2 from './pages/2nd/Detail2';
 import Editor from './pages/2nd/Editor';
 import Edit2 from './pages/2nd/Edit2';
+import Editor2 from './pages/2nd/Editor2';
 
 
 
@@ -52,6 +53,7 @@ function App() {
             <Route path="/edit/:id" element={<Edit/>}/>
             <Route path="/edit2/:id" element={<Edit2/>}/>
             <Route path="/editor" element={<Editor/>}/>
+            <Route path="/editor2/:id" element={<Editor2/>}/>
             <Route  element={<Protected />}>
                 <Route path="/admin" element={<Admin/>}/>
                 <Route path="/admin/addpost" element={<AddPost/>}/>
